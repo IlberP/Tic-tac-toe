@@ -1,4 +1,6 @@
 //create the gameboard, players, player turn logic and restart button 
+//need to add ai gameplay in to make buttons functional
+
 const gameBoard = (() => {
     const Players = (name, sign, ai, turn) => {
         return{name, sign, ai, turn}
@@ -6,7 +8,7 @@ const gameBoard = (() => {
 
     const playerOne = Players('player 1', 'X', false, true)
     const playerTwo = Players('player 2', 'O', false, false)
-
+    //winning combinations
     const win = [
         [0,1,2],
         [3,4,5],
@@ -61,7 +63,7 @@ const gameBoard = (() => {
     })()
     checkWinner = () => {
         turns++
-
+        // separates the X and O arrays into their own arrays to match up with the possible winning combinations
         let playerX = board.reduce((a,e,i) =>
         (e === playerOne.sign) ? a.concat(i):a, [])
         let playerO = board.reduce((a,e,i) =>
@@ -83,7 +85,7 @@ const gameBoard = (() => {
     }
     return {checkWinner, playerChoice, board, winRow}
 })()
-
+//alerts the screen of the winning player
 const displayScreen = (() => {
     winDisplay = () => {
         winComb = () => {
